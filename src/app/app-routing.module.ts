@@ -5,7 +5,6 @@ import { HangmanComponent } from './hangman/hangman.component';
 const routes: Routes = [
   { path: '', redirectTo: 'hangman', pathMatch: 'full' },
   { path: 'hangman', component: HangmanComponent },
-  { path: '**', redirectTo: '/notfound' },
 ];
 
 @NgModule({
