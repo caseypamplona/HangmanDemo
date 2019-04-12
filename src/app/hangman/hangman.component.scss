@@ -1,0 +1,31 @@
+.main-word {
+  letter-spacing: 1rem;
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+
+.banner {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+
+.buttons {
+  width: 3rem;
+  font-weight: bold;
+}
+
+
+
+.valid {
+  background-color: green;
+}
+
+.invalid {
+  background-color: red;
+}

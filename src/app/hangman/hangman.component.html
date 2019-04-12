@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div class="mt-3 p-4 alert alert-dark banner">{{gameOver ? 'GAME OVER! You lost!' : 'Guess the word!'}}</div>
+
+  <div class="main-word pt-3"> {{displayWord}}</div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <canvas id="canvas" #myCanvas class="mt-4"></canvas>
+    </div>
+    <div class="col-md-8">
+      <ng-container *ngFor="let letter of alphabet">
+        <button class="btn-primary p-2 m-3 buttons" (click)="check(letter, $event)" [disabled]="gameOver" appHmButton>
+          {{letter | btnFormat | uppercase}}</button>
+      </ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="gameOver">
+    <button (click)="reset()" class="btn btn-block btn-info"> Reset</button>
+  </div>
+
+  <div *ngIf="!gameOver">
+    <app-counter [lives]="lives"></app-counter>
+  </div>
+
+  <div class="p-4">
+    <h4>History</h4>
+    <div *ngFor="let word of removedWords">
+      {{word}}
+    </div>
+  </div>
+</div>

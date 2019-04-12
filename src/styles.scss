@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  font-family: brandon-grotesque, sans-serif !important;
+  height: 100%;
+}
+
+.btn-primary {
+  background-color: #166bab;
+  border: #166bab;
+}
+
+.btn-primary:disabled {
+  background-color: gray;
+}
