@@ -1,7 +1,12 @@
 .counter {
-  background-color: #24917e;
+  border: 1px solid #166bab;
   font-weight: 600;
-  color: white;
   text-align: center;
   padding: 0rem 1rem;
+  font-size: 16px;
+}
+
+.counter>span {
+  font-weight: 600;
+  font-size: 24px;
 }

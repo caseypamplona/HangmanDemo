@@ -19,7 +19,6 @@ export class HangmanComponent implements OnInit {
   myStickman: any;
   @ViewChild('myCanvas') public canvasRef: ElementRef;
   constructor(private hangmanService: HangmanService) {
-    this.myStickman = this.canvasRef.nativeElement.getContext('2d');
 
   }
 
@@ -42,9 +41,8 @@ export class HangmanComponent implements OnInit {
   check(letter: string, button) {
     const indexes = [];
     this.buttonsClicked.push(button.target);
-
+    button.target.classList.add('unavailable');
     if (this.selectedWord.indexOf(letter) > -1) {
-      button.target.classList.add('valid');
       for (let i = 0; i < this.selectedWord.length; i++) {
         if (this.selectedWord[i] === letter) {
           indexes.push(i);
@@ -62,7 +60,6 @@ export class HangmanComponent implements OnInit {
       }
 
     } else {
-      button.target.classList.add('invalid');
       this.animate();
     }
   }
@@ -78,15 +75,15 @@ export class HangmanComponent implements OnInit {
   reset() {
     for (const buttons of this.buttonsClicked) {
       if (buttons && buttons.classList) {
-        buttons.classList.remove('invalid');
-        buttons.classList.remove('valid');
+        buttons.classList.remove('unavailable');
       }
     }
     this.lives = 10;
     this.gameOver = false;
     this.displayWord = '';
     this.selectWord();
-    this.myStickman.clearRect(0, 0, 400, 400);
+    const myStickman = this.canvasRef.nativeElement.getContext('2d');
+    myStickman.clearRect(0, 0, 400, 400);
   }
 
 
@@ -112,15 +109,17 @@ export class HangmanComponent implements OnInit {
 
 
   canvas() {
-    this.myStickman.beginPath();
-    this.myStickman.strokeStyle = '#4d9124';
-    this.myStickman.lineWidth = 2;
+    const myStickman = this.canvasRef.nativeElement.getContext('2d');
+    myStickman.beginPath();
+    myStickman.strokeStyle = '#4d9124';
+    myStickman.lineWidth = 2;
   }
 
   head() {
-    this.myStickman.beginPath();
-    this.myStickman.arc(60, 25, 10, 0, Math.PI * 2, true);
-    this.myStickman.stroke();
+    const myStickman = this.canvasRef.nativeElement.getContext('2d');
+    myStickman.beginPath();
+    myStickman.arc(60, 25, 10, 0, Math.PI * 2, true);
+    myStickman.stroke();
   }
 
   frame1() {

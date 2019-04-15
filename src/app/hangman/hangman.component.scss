@@ -18,14 +18,12 @@
 .buttons {
   width: 3rem;
   font-weight: bold;
+  position: relative;
 }
 
-
-
-.valid {
-  background-color: green;
-}
-
-.invalid {
-  background-color: red;
+.unavailable {
+  background-color: unset;
+  color: gray;
+  border: solid;
+  text-decoration: line-through;
 }
